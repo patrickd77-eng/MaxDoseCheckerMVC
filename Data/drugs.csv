@@ -1,0 +1,37 @@
+﻿id,route,name,maxdose,dosefrequency
+1, Aripiprazole, Long-acting 
+2, Flupentixol, Depot 
+3, Haloperidol, Depot
+4, Olanzapine, Long-acting 
+5, Paliperidone +, Long-acting 
+6, Paliperidone Trevicta++, Long-acting,
+7, Risperidone, long-acting 
+8, Zuclopenthixol, Depot 
+9, Aripiprazole, IM 
+10, Chlorpromazine, IM 
+11, Haloperidol, IM
+12, Levomepromazine, IM
+13, Olanzapine, IM
+14, Zuclopenthixol acetate +++, IM 
+15, Loxapine, Inhaled
+16, Amisulpride Oral
+17, Aripiprazole Oral
+18, Asenapine Oral
+19, Benperidol Oral
+20, Cariprazine Oral
+21, Chlorpromazine Oral
+22, Clozapine Oral
+23, Flupentixol Oral
+24, Haloperidol Oral
+25, Levomepromazine Oral
+26, Lurasidone                   
+26, Olanzapine Oral
+27, Paliperidone Oral
+28, Pericyazine Oral
+29, Pimozide Oral
+30, Promazine Oral
+31, Quetiapine* Oral
+32, Risperidone Oral
+33, Sulpiride Oral
+34, Trifluoperazine** Oral
+35, Zuclopenthixol Oral
