@@ -61,10 +61,6 @@ function updateFooterCopyrightDate() {
 
 function checkMaxDoseUsage(newPercentage) {
     if (newPercentage >= 100) {
-
-        //Disable add button to prevent spamming
-        $("#AddToList").attr("disabled", "disabled").addClass("btn-disabled btn-danger");
-
         //Display max dose usage warning 
         displayMaxDosePercentWarning();
     }
@@ -72,8 +68,8 @@ function checkMaxDoseUsage(newPercentage) {
 
 function displayMaxDosePercentWarning() {
     $("#warnings").show();
-    $("#percentageWarning").text("The maximum dose percentage has been reached. Please start over.");
-    $("#utilisationContainer").addClass("alert-danger").removeClass("alert-info");
+    $("#percentageWarning").text("The maximum recommended dose percentage has been reached.");
+    $("#utilisationContainer").addClass("alert-warning").removeClass("alert-info");
     
 
 }

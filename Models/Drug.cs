@@ -18,12 +18,13 @@ namespace MaxDoseCheckerMVC.Models
         {
 
 
-            //Live
             try
             {
+                //Debug
                 #if DEBUG
                  string path = System.IO.Directory.GetCurrentDirectory()
-                          + @"\data\drugs.csv";
+                          + @"\wwwroot\data\drugs.csv";
+                //Live
                 #else
                     string path = Environment.GetEnvironmentVariable("HOME") +
                                     "\\site\\wwwroot\\wwwroot\\data\\drugs.csv";
