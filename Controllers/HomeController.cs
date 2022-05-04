@@ -8,27 +8,26 @@ namespace MaxDoseCheckerMVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
+        [ResponseCache(Duration = 5, Location = ResponseCacheLocation.Client, NoStore = false)]
         public IActionResult Index()
         {
-            return View(Drugs.GetDrugInfoFromCsv());
+            return View(Drug.GetDrugInfoFromCsv());
         }
 
-        public IActionResult AddToList(string drug, string dose)
-        {  
+        public IActionResult ProcessDrug(int? drugId, decimal? dose, string drugName, decimal? maxDose)
+        {
 
-            if (drug != null && dose != null)
+            if (drugId != null && dose != null && drugName != null && maxDose != null)
             {
+
                 var result = new
                 {
-                    drug = drug.Trim(),
-                    dose = dose.Trim(),
+                    drugId = drugId,
+                    drugName = drugName,
+                    dose = dose,
+                    maxDose = maxDose,
+                    maxDoseUtilisation = Drug.CalculateMaxDoseUtilisation(dose, maxDose),
                     errors = string.Empty
                 };
 
@@ -38,8 +37,11 @@ namespace MaxDoseCheckerMVC.Controllers
             {
                 var result = new
                 {
-                    drug = string.Empty,
+                    drugId = string.Empty,
+                    drugName = string.Empty,
                     dose = string.Empty,
+                    maxDose = maxDose,
+                    maxDoseUtilisation = string.Empty,
                     errors = "Bad request"
                 };
 
@@ -48,6 +50,7 @@ namespace MaxDoseCheckerMVC.Controllers
 
         }
 
+        [ResponseCache(Duration = 5, Location = ResponseCacheLocation.Client, NoStore = false)]
         public IActionResult Privacy()
         {
             return View();

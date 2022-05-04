@@ -4,9 +4,9 @@
 <div>
     <h1>Anti Psychotic Max Dose Ready Reckoner</h1>
     <p>
-        Simply add each drug line from the list below. Once ready,
-        you can then process the list you've created and see what % the patient is currently utilising regarding the max doses.
+        Simply add each drug line from the list below. The % the patient is currently utilising regarding the max doses will be tallied.
         This information is taken from <b>POMH-UK Antipsychotic Dosage Ready Reckoner - version 9.1 July 2021. </b>
+        Which may be viewed here: <a href="resources/POMHRR.png" download>download.</a>
     </p>
 </div>
 <div class="text-center">
@@ -16,31 +16,41 @@
             <select required="required" name="drugs" id="drug">
                 @foreach (var item in Model)
                 {
-                    <option value="@item.Name">@item.Name @item.Route @item.Frequency</option>
+                    <option maxDose="@item.MaxDose" drugName="@item.Name.Trim()" value="@item.Id">@item.Name.Trim(), @item.Route.Trim(), @item.Frequency.Trim()</option>
                 }
             </select>
         </label>
-        <label>Enter patient's dose:</label>
-        <input required="required" type="number" min=1 id="dose" placeholder="100" />
-        <button class="btn-primary" id="AddToList" type="submit">Add drug for checking</button>
-        <button class="btn-secondary" type="reset" id="Reset">Reset page</button>
+        <label>
+            Enter patient's dose:
+            <input required="required" type="number" min=1 id="dose" placeholder="100" />
+        </label>
+        <button class="btn-primary" id="AddToList" type="submit">Add drug to list</button>
+        <button class="btn-secondary" type="reset" id="Reset">Reset entire page</button>
     </form>
 </div>
-<div id="resultsArea">
-    <div><p id="rDataErrors" class="text-warning"></p></div>
-    <table id="rData">
-    </table>
-    <h2 class="card text-lg-center mt-5">Max Dosage Utilisation: <span id="percentage"></span>0%</h2>
-</div>
-<div class="text-center">
-    <hr />
-    <br />
-    <p>+ Maintenance dose licensed to be given monthly    </p>
-    <p>++ Formulation licensed to be given every 3 months </p>
-    <p>
-        +++ A maximum of 150mg in any 48-hour perioud and a maximum
-        cumulative dose of 200mg in any two week period.
-    </p>
-    <hr />
 
+<div id="resultsArea" class="text-md-center">
+    <hr />
+    <div id="utilisationContainer" class="text-lg-center align-content-center card alert-info">
+        <label class="font-weight-bolder">
+            Max Dosage Utilisation (%):
+            <input class="border-0 text-lg-center" id="percentage" type="number" value="0" readonly
+                   style="background: rgba(0, 0, 0, 0);border: none;outline: none;" />
+        </label>
+        <div id="warnings">
+            <p class="text-lg-center text-dark font-weight-bolder" id="percentageWarning"></p>
+        </div>
+    </div>
+    <hr />
+    <table id="resultData" class="table table-bordered d-md-inline-flex justify-content-center flex-wrap"></table>
+</div>
+<div class="text-center badge-light">
+    <hr />
+    <h4>Drug Symbol Key:</h4>
+    <br />
+    <p>No symbol - no dose note.</p>
+    <p>+ - Maintenance dose licensed to be given monthly.</p>
+    <p>++ - Formulation licensed to be given every 3 months.</p>
+    <p>+++ - A maximum of 150mg in any 48-hour perioud and a maximum cumulative dose of 200mg in any two week period.</p>
+    <hr />
 </div>

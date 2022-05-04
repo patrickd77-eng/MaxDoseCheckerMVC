@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace MaxDoseCheckerMVC.Models
 {
-    public class Drugs
+    public class Drug
 
     {
         public int Id { get; set; }
@@ -14,25 +14,25 @@ namespace MaxDoseCheckerMVC.Models
         public decimal MaxDose { get; set; }
         public string Frequency { get; set; }
 
-        public static List<Drugs> GetDrugInfoFromCsv()
+        public static List<Drug> GetDrugInfoFromCsv()
         {
 
             string path = System.IO.Directory.GetCurrentDirectory()
             + @"\data\drugs.csv";
 
-            List<Drugs> values = File.ReadAllLines(path)
+            List<Drug> values = File.ReadAllLines(path)
                                            .Skip(1)
-                                           .Select(v => Drugs.FromCsv(v))
+                                           .Select(v => Drug.FromCsv(v))
                                            .ToList();
 
             return values;
 
         }
 
-        public static Drugs FromCsv(string csvLine)
+        public static Drug FromCsv(string csvLine)
         {
             string[] values = csvLine.Split(',');
-            Drugs Drugs = new Drugs();
+            Drug Drugs = new Drug();
             Drugs.Id = Convert.ToInt32(values[0]);
             Drugs.Name = Convert.ToString(values[1]);
             Drugs.Route = Convert.ToString(values[2]);
@@ -40,6 +40,13 @@ namespace MaxDoseCheckerMVC.Models
             Drugs.Frequency = Convert.ToString(values[4]);
 
             return Drugs;
+        }
+
+        public static int CalculateMaxDoseUtilisation(decimal? dose, decimal? maxDose)
+        {
+            int maxDoseUtilisation = (int)(dose / maxDose * 100);
+
+            return maxDoseUtilisation;
         }
     }
 }
