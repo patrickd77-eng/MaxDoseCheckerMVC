@@ -21,14 +21,14 @@ namespace MaxDoseCheckerMVC.Models
             try
             {
                 //Debug
-                #if DEBUG
-                 string path = System.IO.Directory.GetCurrentDirectory()
-                          + @"\wwwroot\data\drugs.csv";
+#if DEBUG
+                string path = System.IO.Directory.GetCurrentDirectory()
+                         + @"\wwwroot\data\drugs.csv";
                 //Live
-                #else
+#else
                     string path = Environment.GetEnvironmentVariable("HOME") +
                                     "\\site\\wwwroot\\wwwroot\\data\\drugs.csv";
-                #endif
+#endif
                 List<Drug> values = File.ReadAllLines(path)
                                                .Skip(1)
                                                .Select(v => Drug.FromCsv(v))

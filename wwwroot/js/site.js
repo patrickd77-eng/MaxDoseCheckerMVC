@@ -70,6 +70,6 @@ function displayMaxDosePercentWarning() {
     $("#warnings").show();
     $("#percentageWarning").text("The maximum recommended dose percentage has been reached.");
     $("#utilisationContainer").addClass("alert-warning").removeClass("alert-info");
-    
+
 
 }
