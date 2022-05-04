@@ -33,7 +33,7 @@ $('#AddToList').click(function (e) {
             tallyPercentage(result);
         }
         else {
-            alert("Did you forget to choose a drug and/or enter a dose? Try again.");
+            alert("Did you forget to enter a dose? Please try again.");
         }
     });
 })
