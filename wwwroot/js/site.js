@@ -39,11 +39,11 @@ $('#AddToList').click(function (e) {
 })
 
 function createResultsHtml(result) {
-    $("#resultData").append("<tr class=\"card\"><td>"
+    $("#resultData").append("<tr class=\"card alert-info\"><td>"
         + "<p><b>Drug</b>: " + result.drugName + "</p>"
         + "<p><b>Dose:</b> " + result.dose + "</p>"
         + "<p><b>Max Dose:</b> " + result.maxDose + "</p>"
-        + "<p><b>Max dose utilisation:</b> " + result.maxDoseUtilisation + "%" + "</p>"
+        + "<p><b>Max dose utilisation (this drug):</b> " + result.maxDoseUtilisation + "%" + "</p>"
         + "<br></td></tr>");
 }
 
@@ -72,7 +72,7 @@ function checkMaxDoseUsage(newPercentage) {
 
 function displayMaxDosePercentWarning() {
     $("#warnings").show();
-    $("#percentageWarning").text("The maximum dose percentage has been reached.");
+    $("#percentageWarning").text("The maximum dose percentage has been reached. Please start over.");
     $("#utilisationContainer").addClass("alert-danger").removeClass("alert-info");
     
 

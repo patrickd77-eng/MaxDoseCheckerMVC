@@ -5,8 +5,8 @@
     <h1>Anti Psychotic Max Dose Ready Reckoner</h1>
     <p>
         Simply add each drug line from the list below. The % the patient is currently utilising regarding the max doses will be tallied.
-        This information is taken from <b>POMH-UK Antipsychotic Dosage Ready Reckoner - version 9.1 July 2021. </b>
-        Which may be viewed here: <a href="resources/POMHRR.png" download>download.</a>
+        This information is taken from <b>POMH-UK Antipsychotic Dosage Ready Reckoner - version 9.1 July 2021</b>,
+        which may be viewed here: <a href="./resources/POMHRR.png" download>download.</a>
     </p>
 </div>
 <div class="text-center">
@@ -25,15 +25,14 @@
             <input required="required" type="number" min=1 id="dose" placeholder="100" />
         </label>
         <button class="btn-primary" id="AddToList" type="submit">Add drug to list</button>
-        <button class="btn-secondary" type="reset" id="Reset">Reset entire page</button>
+        <button class="btn-secondary" type="reset" id="Reset">Reset</button>
     </form>
 </div>
-
 <div id="resultsArea" class="text-md-center">
     <hr />
     <div id="utilisationContainer" class="text-lg-center align-content-center card alert-info">
         <label class="font-weight-bolder">
-            Max Dosage Utilisation (%):
+            Overall Max Dosage Utilisation (%):
             <input class="border-0 text-lg-center" id="percentage" type="number" value="0" readonly
                    style="background: rgba(0, 0, 0, 0);border: none;outline: none;" />
         </label>
@@ -42,7 +41,7 @@
         </div>
     </div>
     <hr />
-    <table id="resultData" class="table table-bordered d-md-inline-flex justify-content-center flex-wrap"></table>
+    <table id="resultData" class="table d-md-inline-flex justify-content-center flex-wrap"></table>
 </div>
 <div class="text-center badge-light">
     <hr />
