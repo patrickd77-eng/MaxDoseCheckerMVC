@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MaxDoseCheckerMVC</title>
+    <title>@ViewData["Title"] - Ready Reckoner Anti Psychotics</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -32,12 +32,23 @@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
+            <div class="text-lg-center badge-warning">
+                <hr />
+                <p>
+                    This application should be used as an approximation only and
+                    all results should be verified.
+                </p>
+                <p>
+                    The creator of this app takes no liability toward the result or what
+                    is done with said result.
+                </p>
+            </div>
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - MaxDoseCheckerMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; <span id="Year">xxxx</span> - Ready Reckoner Anti Psychotics - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

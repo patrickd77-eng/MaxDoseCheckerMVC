@@ -11,8 +11,8 @@ namespace MaxDoseCheckerMVC.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Route { get; set; }
-         public decimal MaxDose { get; set; }
-         public string Frequency { get; set; }
+        public decimal MaxDose { get; set; }
+        public string Frequency { get; set; }
 
         public static List<Drugs> GetDrugInfoFromCsv()
         {

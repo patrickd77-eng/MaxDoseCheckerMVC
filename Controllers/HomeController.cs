@@ -1,8 +1,8 @@
 ﻿using MaxDoseCheckerMVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System.Diagnostics;
-using MaxDoseCheckerMVC.Calculation;
 
 namespace MaxDoseCheckerMVC.Controllers
 {
@@ -15,18 +15,37 @@ namespace MaxDoseCheckerMVC.Controllers
             _logger = logger;
         }
 
-        [ResponseCache(Duration = 5, Location = ResponseCacheLocation.Client, NoStore = false)]
         public IActionResult Index()
         {
-           var drugList = Drugs.GetDrugInfoFromCsv();
-
-            return View(drugList);
+            return View(Drugs.GetDrugInfoFromCsv());
         }
-       
-        [HttpPost]
-        public IActionResult ProcessSubmittedDoses()
-        {
-            return View();   
+
+        public IActionResult AddToList(string drug, string dose)
+        {  
+
+            if (drug != null && dose != null)
+            {
+                var result = new
+                {
+                    drug = drug.Trim(),
+                    dose = dose.Trim(),
+                    errors = string.Empty
+                };
+
+                return Ok(result);
+            }
+            else
+            {
+                var result = new
+                {
+                    drug = string.Empty,
+                    dose = string.Empty,
+                    errors = "Bad request"
+                };
+
+                return Ok(result);
+            }
+
         }
 
         public IActionResult Privacy()
