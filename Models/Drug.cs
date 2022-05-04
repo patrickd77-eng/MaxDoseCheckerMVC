@@ -17,15 +17,31 @@ namespace MaxDoseCheckerMVC.Models
         public static List<Drug> GetDrugInfoFromCsv()
         {
 
-            string path = System.IO.Directory.GetCurrentDirectory()
-            + @"\data\drugs.csv";
 
-            List<Drug> values = File.ReadAllLines(path)
-                                           .Skip(1)
-                                           .Select(v => Drug.FromCsv(v))
-                                           .ToList();
+            //Live
+            try
+            {
+                #if DEBUG
+                 string path = System.IO.Directory.GetCurrentDirectory()
+                          + @"\data\drugs.csv";
+                #else
+                    string path = Environment.GetEnvironmentVariable("HOME") +
+                                    "\\site\\wwwroot\\wwwroot\\data\\drugs.csv";
+                #endif
+                List<Drug> values = File.ReadAllLines(path)
+                                               .Skip(1)
+                                               .Select(v => Drug.FromCsv(v))
+                                               .ToList();
 
-            return values;
+                return values;
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+
+
 
         }
 
