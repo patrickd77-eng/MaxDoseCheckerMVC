@@ -1,14 +1,37 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+<div>
+    <h1>Anti Psychotic Max Dose Ready Reckoner</h1>
+</div>
 <div class="text-center">
-    <select name="drugs" id="drugs">
-    @foreach (var item in Model)
-   {
-  <option value="@item.Name">@item.Name</option>
-   }
- 
-</select>
+    <form method="post">
+        <label>Select drug: </label>
+        <select name="drugs" id="drugs">
+            @foreach (var item in Model)
+            {
+                <option value="@item.Id">@item.Name @item.Route @item.Frequency</option>
+            }
+        </select>
+        <label>Enter dose:</label>
+        <input type="number" id="dose" placeholder="1" />
+        <button class="btn-primary" type="submit">Check max dosage</button>
+        <button class="btn-outline-secondary" type="reset">Reset form</button>
+    </form>
+</div>
+<div class="text-center">
+    <hr />
+    <br />
+    <p>+ Maintenance dose licensed to be given monthly    </p>
+    <p>++ Formulation licensed to be given every 3 months </p>
+    <p>+++ A maximum of 150mg in any 48-hour perioud and a maximum 
+        cumulative dose of 200mg in any two week period.</p>
+    <hr />
 
+</div>
+<div class="text-lg-center alert-danger">
+    <p>Warning: This application should be used as an approximation only and
+        all results should be verified.</p>
+    <p>The creator of this app takes no liability toward the result or what 
+        is done with said result.</p>
 </div>

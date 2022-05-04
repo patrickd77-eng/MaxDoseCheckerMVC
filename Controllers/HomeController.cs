@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using MaxDoseCheckerMVC.Calculation;
 
 namespace MaxDoseCheckerMVC.Controllers
 {
@@ -14,22 +15,26 @@ namespace MaxDoseCheckerMVC.Controllers
             _logger = logger;
         }
 
+        [ResponseCache(Duration = 5, Location = ResponseCacheLocation.Client, NoStore = false)]
         public IActionResult Index()
         {
-
            var drugList = Drugs.GetDrugInfoFromCsv();
 
             return View(drugList);
         }
-
-
+       
+        [HttpPost]
+        public IActionResult ProcessSubmittedDoses()
+        {
+            return View();   
+        }
 
         public IActionResult Privacy()
         {
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        [ResponseCache(Duration = 5, Location = ResponseCacheLocation.Client, NoStore = false)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
