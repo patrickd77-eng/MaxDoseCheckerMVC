@@ -41,7 +41,7 @@ $('#AddToList').click(function (e) {
 function createResultsHtml(result) {
     $("#resultData").append("<tr class=\"card alert-info\"><td>"
         + "<p><b>Drug</b>: " + result.drugName + "</p>"
-        + "<p><b>Dose:</b> " + result.dose + "</p>"
+        + "<p><b>Dose Entered:</b> " + result.dose + "</p>"
         + "<p><b>Max Dose:</b> " + result.maxDose + "</p>"
         + "<p><b>Max dose utilisation (this drug):</b> " + result.maxDoseUtilisation + "%" + "</p>"
         + "<br></td></tr>");
