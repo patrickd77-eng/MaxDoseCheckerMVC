@@ -6,26 +6,26 @@
     <p>
         Simply add each drug line from the list below. Each dose will be tallied up against the maximum allowed dose for that drug and the overall maximum threshold.
         The thresholds are taken from <b>POMH-UK Antipsychotic Dosage Ready Reckoner - version 9.1 July 2021</b>,
-        which may be viewed here: <a href="./data/POMHRR.png" download>download.</a> 
+        which may be viewed here: <a href="./data/POMHRR.png" download>download.</a>
         The website uses a CSV version of the above tables: <a href="./data/drugs.csv" download.>download.</a>
     </p>
 </div>
 <div class="text-center input-group">
     <form>
-        <label>
+        <label for="drug">
             Select drug:
-            <select required="required" name="drugs" id="drug" class="form-select overflow-hidden" 
-            style="white-space: pre-wrap;  overflow: hidden;  text-overflow: ellipsis;  max-width: 300px;">
-                @foreach (var item in Model)
-                {
-                    <option maxDose="@item.MaxDose" drugName="@item.Name.Trim()" value="@item.Id">@item.Name.Trim(), @item.Route.Trim(), @item.Frequency.Trim()</option>
-                }
-            </select>
         </label>
-        <label>
+        <select required="required" name="drugs" id="drug" class="form-select overflow-hidden"
+                style="white-space: pre-wrap;  overflow: hidden;  text-overflow: ellipsis;  max-width: 300px;">
+            @foreach (var item in Model)
+            {
+                <option maxDose="@item.MaxDose" drugName="@item.Name.Trim()" value="@item.Id">@item.Name.Trim(), @item.Route.Trim(), @item.Frequency.Trim()</option>
+            }
+        </select>
+        <label for="dose">
             Enter patient's dose:
-            <input required="required" type="number" min="1" id="dose" placeholder="100" />
         </label>
+        <input class="form-control-plaintext" required="required" type="number" min="1" id="dose" placeholder="100" />
         <button class="btn-primary" id="AddToList" type="submit">Add drug to list</button>
         <button class="btn-secondary" type="reset" id="Reset">Reset</button>
     </form>
