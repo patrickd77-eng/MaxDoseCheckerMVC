@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\resources\" />
+    <None Include="wwwroot\data\drugs.csv" />
   </ItemGroup>
 
 </Project>
